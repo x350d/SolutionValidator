@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <cmath>
 #include "ConstraintsLoading.h"
 #include "Item.h"
 #include "Write.h"

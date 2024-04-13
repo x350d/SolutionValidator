@@ -93,7 +93,7 @@ namespace validator {
 			}
 		}
 		Instance instance(name, vehicle, itemtypes, customers, v_max, tw);
-		instance.items.resize(no_items + 1);
+		instance.items.resize(no_items);
 		return instance;
 	}
 
