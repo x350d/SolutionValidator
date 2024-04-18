@@ -129,7 +129,7 @@ bool validator::ConstraintsRouting::checkDispatchedCustomers(const Solution& sol
 	std::set<unsigned int> dispatched_customers;
 	for (const auto& tour : solution.tours) {
 		if (tour.customer_ids.size() == 0 
-			|| count(tour.customer_ids.begin(), tour.customer_ids.end(), 0) == tour.customer_ids.size()) {
+			|| static_cast<unsigned int>(count(tour.customer_ids.begin(), tour.customer_ids.end(), 0)) == tour.customer_ids.size()) {
 			if (msg) std::cerr << "Tour " << tour.id << " without customers." << std::endl;
 			return false;
 		}
@@ -161,7 +161,7 @@ bool validator::ConstraintsRouting::checkDispatchedItems(const Solution& solutio
 		unsigned int customer_id = customer.id;
 		for (auto& demand : customer.demands) {
 			unsigned int typeId = demand.first;
-			int qt = 0;
+			unsigned int qt = 0;
 			for (const auto& tour : solution.tours) {
 				qt += count_if(tour.item_ids.begin(), tour.item_ids.end(), [typeId, customer_id, instance](const unsigned int id) {
 					auto& item = instance.items.at(id);

@@ -278,9 +278,9 @@ bool validator::ConstraintsLoading::checkVStability(Item& item, const VerticalSt
 		return true;
 	case VerticalStability::StaticStabilityMack:
 		return checkStaticStabiltyMack(item, alpha, instance, msg);
+	default:
+	    return true;
 	}
-
-	return true;
 }
 
 bool validator::ConstraintsLoading::checkFlyingItem(Item& item, Instance& instance, const bool& msg) {

@@ -16,7 +16,7 @@ namespace validator {
 		* @param item_ids     the Sequence of Item Ids
 		*/
 		Tour(unsigned int id, std::vector<unsigned int> customer_ids, std::vector<unsigned int> item_ids)
-			: id(id), customer_ids(customer_ids), item_ids(item_ids), mass_R(0), mass_L(0), sum_F(0), sum_T(0), feasible(false) {}
+			: id(id), customer_ids(customer_ids), item_ids(item_ids), sum_T(0.0), sum_F(0.0), mass_R(0.0), mass_L(0.0), feasible(false) {}
 
 		/** Unique id */
 		unsigned int id;
