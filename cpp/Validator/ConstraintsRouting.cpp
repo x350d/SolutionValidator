@@ -37,11 +37,11 @@ bool validator::ConstraintsRouting::checkCost(const Solution& solution, const In
 		Customer customerJ = instance.customers.at(0);
 		totalCost += calcEuclideanDistance(customerI.x, customerI.y, customerJ.x, customerJ.y);
 	}
-	//double solCost = solution.total_travel_distance;
-	//if (std::max(totalCost * 0.999, solCost) != std::min(totalCost * 1.003, solCost)) {
-	//	if (msg) std::cerr << "Total Travel Distance is wrong" << std::endl;
-	//	return false;
-	//}
+	double solCost = solution.total_travel_distance;
+	if (std::max(totalCost * 0.999, solCost) != std::min(totalCost * 1.003, solCost)) {
+		if (msg) std::cerr << "Total Travel Distance is wrong" << std::endl;
+		return false;
+	}
 	return true;
 }
 
@@ -180,9 +180,10 @@ bool validator::ConstraintsRouting::checkDispatchedItems(const Solution& solutio
 
 
 bool validator::ConstraintsRouting::checkUsedVehicles(const Solution& solution, const Instance& instance, const bool& msg) {
+    return true;
 	// Not an error since Constraints can lead to an exceedence
 	if (solution.tours.size() > instance.v_max) {
-		if (msg) std::cerr << "Number of used vehicles increases number of available vehicles." << std::endl;
+		if (msg) std::cerr << "Number of used vehicles exceeds number of available vehicles." << std::endl;
 	}
 	return true;
 }
