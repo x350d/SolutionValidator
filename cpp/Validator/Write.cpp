@@ -122,11 +122,7 @@ void validator::Write::solutionFile(const std::string path, Solution& solution, 
 		if (tour.customer_ids.empty()) {
 			continue;
 		}
-		size_t noItems = 0;
-		for (const auto& customerId : tour.customer_ids) {
-			Customer& customer = instance.customers.at(customerId);
-			noItems += customer.item_ids.size();
-		}
+		size_t noItems = tour.item_ids.size();
 		outputFile << breakLine;
 		outputFile << "Tour_Id:\t\t\t" << std::to_string(id++) << std::endl;
 		outputFile << "No_of_Customers:\t\t" << std::to_string(tour.customer_ids.size()) << std::endl;
